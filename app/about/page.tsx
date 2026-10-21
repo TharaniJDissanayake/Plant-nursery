@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BUSINESS, WA_BASE } from "@/config/business";
+import { BUSINESS } from "@/config/business";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -110,7 +110,7 @@ export default function AboutPage() {
               What we stand for
             </h2>
             <p className="text-stone-500 max-w-md mx-auto">
-              These aren't just words — they're how we run every order.
+              These aren&apos;t just words — they&apos;re how we run every order.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -140,7 +140,7 @@ export default function AboutPage() {
               We deliver to{" "}
               <strong className="text-white">{BUSINESS.deliveryAreas}</strong> on{" "}
               <strong className="text-white">{BUSINESS.deliveryDays}</strong>.{" "}
-              {BUSINESS.deliveryNote} We'll always confirm your slot via WhatsApp
+              {BUSINESS.deliveryNote} We&apos;ll always confirm your slot via WhatsApp
               before we set off.
             </p>
           </div>
