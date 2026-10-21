@@ -8,7 +8,8 @@ export interface Plant {
   light: "low" | "medium" | "bright";
   water: "low" | "medium" | "high";
   badge?: string;            // e.g. "Best Seller", "New"
-  color: string;             // placeholder bg color (hex, no #)
+  image: string;             // path under /public, e.g. "/images/plants/anthurium.jpg"
+  imageAlt: string;          // describes the photo for screen readers
 }
 
 export const plants: Plant[] = [
@@ -21,7 +22,8 @@ export const plants: Plant[] = [
     light: "medium",
     water: "medium",
     badge: "Best Seller",
-    color: "4ade80",
+    image: "/images/plants/monstera-deliciosa.jpg",
+    imageAlt: "Monstera deliciosa with large split leaves in a cream pot",
   },
   {
     id: "snake-plant",
@@ -32,7 +34,8 @@ export const plants: Plant[] = [
     light: "low",
     water: "low",
     badge: "Easy Care",
-    color: "86efac",
+    image: "/images/plants/snake-plant.jpg",
+    imageAlt: "Person holding a tall green snake plant in a white pot",
   },
   {
     id: "peace-lily",
@@ -42,7 +45,8 @@ export const plants: Plant[] = [
     care: "Loves shade and humidity. Blooms white flowers. Great for bedrooms.",
     light: "low",
     water: "medium",
-    color: "bbf7d0",
+    image: "/images/plants/peace-lily.jpg",
+    imageAlt: "Close-up of a white peace lily flower beside a window",
   },
   {
     id: "pothos-golden",
@@ -53,7 +57,8 @@ export const plants: Plant[] = [
     light: "low",
     water: "low",
     badge: "Popular",
-    color: "a3e635",
+    image: "/images/plants/pothos-golden.jpg",
+    imageAlt: "Golden pothos leaves with cream and yellow variegation",
   },
   {
     id: "succulent-set",
@@ -64,7 +69,8 @@ export const plants: Plant[] = [
     light: "bright",
     water: "low",
     badge: "Gift Ready",
-    color: "bef264",
+    image: "/images/plants/succulent-set.jpg",
+    imageAlt: "Small succulents in terracotta pots on a white tray",
   },
   {
     id: "anthurium",
@@ -74,7 +80,8 @@ export const plants: Plant[] = [
     care: "Striking red blooms year-round. Needs bright indirect light and humidity.",
     light: "medium",
     water: "medium",
-    color: "fca5a5",
+    image: "/images/plants/anthurium.jpg",
+    imageAlt: "Glossy red anthurium blooms with yellow spadices among green leaves",
   },
   {
     id: "jasmine-pichcha",
@@ -86,7 +93,8 @@ export const plants: Plant[] = [
     light: "bright",
     water: "medium",
     badge: "Local Favourite",
-    color: "fef9c3",
+    image: "/images/plants/jasmine-pichcha.jpg",
+    imageAlt: "White jasmine (pichcha) flower growing through a dark iron gate",
   },
   {
     id: "curry-leaf",
@@ -98,7 +106,8 @@ export const plants: Plant[] = [
     light: "bright",
     water: "medium",
     badge: "Edible",
-    color: "d9f99d",
+    image: "/images/plants/curry-leaf.jpg",
+    imageAlt: "Hand holding fresh sprigs of green curry leaves",
   },
 ];
 
