@@ -1,14 +1,19 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { BUSINESS, whatsappLink, IG_URL } from "@/config/business";
 import PlantCard from "@/components/PlantCard";
+import JsonLd from "@/components/JsonLd";
 import { plants } from "@/data/plants";
+import { pageMetadata } from "@/lib/seo";
+import { storeSchema } from "@/lib/structured-data";
 
-export const metadata: Metadata = {
-  title: `${BUSINESS.name} | Fresh Plants Delivered in Colombo`,
+export const metadata = pageMetadata({
+  // absolute: the layout template would otherwise append the shop name a second time
+  title: `${BUSINESS.name} | Fresh Plants Delivered in Kadawatha & Colombo`,
   description:
-    "Sri Lanka's friendliest plant shop. Order beautiful indoor & outdoor plants online and get them delivered right to your door in Colombo.",
-};
+    "Sri Lanka's friendliest plant shop. Order beautiful indoor & outdoor plants online, delivered to your door in Kadawatha, Colombo and nearby.",
+  path: "/",
+  absoluteTitle: true,
+});
 
 const features = [
   {
@@ -42,6 +47,8 @@ export default function HomePage() {
 
   return (
     <>
+      <JsonLd data={storeSchema(plants)} />
+
       {/* ── HERO ──────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-gradient-to-br from-brand-800 via-brand-700 to-brand-600 text-white">
         {/* Decorative blobs */}

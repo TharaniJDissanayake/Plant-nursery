@@ -14,7 +14,7 @@ export default function PlantCard({
   );
 
   return (
-    <div className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md border border-brand-100 hover:border-brand-300 transition-all duration-200 flex flex-col">
+    <div id={plant.id} className="group scroll-mt-24 bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md border border-brand-100 hover:border-brand-300 transition-all duration-200 flex flex-col">
       {/* Image */}
       <div className="relative overflow-hidden">
         <Image

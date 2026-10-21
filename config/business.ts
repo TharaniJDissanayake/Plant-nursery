@@ -1,7 +1,10 @@
 // ─── EDIT THESE VALUES BEFORE DEPLOYING ───────────────────────────────────────
 // Every contact and delivery detail on the site is read from here.
+const DELIVERY_AREAS = ["Kadawatha", "Kelaniya", "Peliyagoda", "Wattala", "Ja-Ela", "Colombo"];
+
 export const BUSINESS = {
   name: "Petal & Leaf",
+  siteUrl: "https://plant-nursery-delta.vercel.app",
   tagline: "Fresh Plants Delivered to Your Door in Kadawatha & Colombo",
   description:
     "We grow and deliver beautiful indoor and outdoor plants right to your doorstep across Kadawatha, Colombo and surrounding areas. Every plant is healthy, well-rooted, and packed with care.",
@@ -11,7 +14,8 @@ export const BUSINESS = {
   facebook: "your-page-name",       // e.g. "petalandleaflk"
   email: "",                        // optional
   serviceArea: "Kadawatha, Colombo", // short form, followed by "& surrounding areas"
-  deliveryAreas: "Kadawatha, Kelaniya, Peliyagoda, Wattala, Ja-Ela, Colombo and surrounding areas",
+  deliveryAreaList: DELIVERY_AREAS,  // used individually in structured data
+  deliveryAreas: `${DELIVERY_AREAS.join(", ")} and surrounding areas`,
   deliveryDays: "Tuesday, Thursday & Saturday",
   deliveryNote: "Orders placed before 8 PM will be dispatched the next available delivery day.",
   currency: "LKR",

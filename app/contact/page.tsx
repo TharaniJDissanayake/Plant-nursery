@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
 import { BUSINESS, whatsappLink, IG_URL, FB_URL } from "@/config/business";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description: `Get in touch with ${BUSINESS.name} via WhatsApp, Instagram, or Facebook. We deliver plants across ${BUSINESS.deliveryAreas}.`,
-};
+export const metadata = pageMetadata({
+  title: "Contact & Delivery Info",
+  description: `Order or ask about plants via WhatsApp, Instagram or Facebook. See ${BUSINESS.name}'s delivery areas and days for Kadawatha, Colombo and nearby.`,
+  path: "/contact",
+});
 
 const faqs = [
   {

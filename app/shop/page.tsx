@@ -1,12 +1,17 @@
-import type { Metadata } from "next";
 import PlantCard from "@/components/PlantCard";
+import JsonLd from "@/components/JsonLd";
 import { plants } from "@/data/plants";
 import { BUSINESS, whatsappLink } from "@/config/business";
+import { pageMetadata } from "@/lib/seo";
+import { productListSchema } from "@/lib/structured-data";
 
-export const metadata: Metadata = {
-  title: "Shop Plants",
-  description: `Browse our full catalog of indoor and outdoor plants available for delivery in Colombo and surrounding areas. Order via WhatsApp.`,
-};
+const lowestPrice = Math.min(...plants.map((p) => p.price)).toLocaleString();
+
+export const metadata = pageMetadata({
+  title: "Shop Indoor & Outdoor Plants",
+  description: `Browse Monstera, Snake Plant, Anthurium, Jasmine, Curry Leaf and more from ${BUSINESS.currency} ${lowestPrice}. Delivered across Kadawatha, Colombo and nearby. Order via WhatsApp.`,
+  path: "/shop",
+});
 
 const categories = [
   { key: "all", label: "All Plants" },
@@ -27,6 +32,8 @@ export default function ShopPage() {
 
   return (
     <>
+      <JsonLd data={productListSchema(plants)} />
+
       {/* Header */}
       <section className="bg-white border-b border-brand-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
