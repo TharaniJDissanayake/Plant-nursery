@@ -44,7 +44,7 @@ export default function ShopPage() {
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
 
         {/* Category sections */}
-        {categories.slice(1).map(({ key, label }) => {
+        {categories.slice(1).map(({ key, label }, sectionIndex) => {
           const group = byCategory(key);
           if (group.length === 0) return null;
           return (
@@ -56,8 +56,13 @@ export default function ShopPage() {
                 </span>
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {group.map((plant) => (
-                  <PlantCard key={plant.id} plant={plant} />
+                {group.map((plant, i) => (
+                  <PlantCard
+                    key={plant.id}
+                    plant={plant}
+                    // first row of the first section is above the fold
+                    priority={sectionIndex === 0 && i < 4}
+                  />
                 ))}
               </div>
             </div>
@@ -68,7 +73,7 @@ export default function ShopPage() {
         <div className="mt-6 rounded-2xl bg-brand-800 text-white p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
             <h3 className="text-xl font-bold mb-1">
-              Don't see what you're looking for?
+              Don&apos;t see what you&apos;re looking for?
             </h3>
             <p className="text-brand-200 text-sm">
               Send us a message — we take special orders and can source specific
