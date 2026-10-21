@@ -54,7 +54,7 @@ export default function HomePage() {
               🌿 Colombo & Surrounding Areas
             </span>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight text-balance mb-6">
-              Fresh Plants Delivered to Your Door in Colombo
+              Fresh Plants Delivered to Your Door in Kadawatha & Colombo
             </h1>
             <p className="text-brand-100 text-lg leading-relaxed mb-8 max-w-xl">
               Discover beautiful indoor and outdoor plants — curated, grown locally,
