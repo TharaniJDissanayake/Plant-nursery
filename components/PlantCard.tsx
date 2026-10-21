@@ -2,7 +2,13 @@ import Image from "next/image";
 import { Plant, lightLabel, waterLabel } from "@/data/plants";
 import { BUSINESS, WA_BASE } from "@/config/business";
 
-export default function PlantCard({ plant }: { plant: Plant }) {
+export default function PlantCard({
+  plant,
+  priority = false,
+}: {
+  plant: Plant;
+  priority?: boolean; // only for cards visible above the fold
+}) {
   const message = encodeURIComponent(
     `Hi! I'd like to order ${plant.name} (${BUSINESS.currency} ${plant.price.toLocaleString()}). Please let me know if it's available.`
   );
@@ -13,12 +19,13 @@ export default function PlantCard({ plant }: { plant: Plant }) {
       {/* Image */}
       <div className="relative overflow-hidden">
         <Image
-          src={`https://placehold.co/400x300/${plant.color}/166534?text=${encodeURIComponent(plant.name)}&font=montserrat`}
-          alt={plant.name}
-          width={400}
-          height={300}
+          src={plant.image}
+          alt={plant.imageAlt}
+          width={800}
+          height={600}
+          sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          priority={priority}
           className="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-300"
-          unoptimized
         />
         {plant.badge && (
           <span className="absolute top-3 left-3 bg-warm-500 text-white text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wide">
