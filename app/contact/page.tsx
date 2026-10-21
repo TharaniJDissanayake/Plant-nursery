@@ -1,5 +1,7 @@
 import { BUSINESS, whatsappLink, IG_URL, FB_URL } from "@/config/business";
 import { pageMetadata } from "@/lib/seo";
+import TrackedLink from "@/components/TrackedLink";
+import type { AnalyticsEvent } from "@/lib/analytics";
 
 export const metadata = pageMetadata({
   title: "Contact & Delivery Info",
@@ -69,6 +71,7 @@ export default function ContactPage() {
               subtitle="Quickest way to order or ask questions"
               cta="Chat with us"
               href={waUrl}
+              event={{ name: "whatsapp_order_click", params: { location: "contact" } }}
               ctaColor="bg-green-600 hover:bg-green-700"
             />
 
@@ -80,6 +83,7 @@ export default function ContactPage() {
               subtitle={`Follow us at ${BUSINESS.instagram} for new arrivals & plant tips`}
               cta="Follow on Instagram"
               href={IG_URL}
+              event={{ name: "instagram_click", params: { location: "contact" } }}
               ctaColor="bg-pink-600 hover:bg-pink-700"
             />
 
@@ -150,6 +154,7 @@ function ContactCard({
   subtitle,
   cta,
   href,
+  event,
   ctaColor,
 }: {
   icon: React.ReactNode;
@@ -158,8 +163,11 @@ function ContactCard({
   subtitle: string;
   cta: string;
   href: string;
+  event?: AnalyticsEvent;
   ctaColor: string;
 }) {
+  const ctaClass = `inline-block mt-3 text-white text-xs font-semibold px-3 py-1.5 rounded-full ${ctaColor} transition-colors`;
+
   return (
     <div className="bg-white rounded-2xl border border-brand-100 p-5 flex items-start gap-4">
       <div
@@ -170,14 +178,15 @@ function ContactCard({
       <div className="flex-1 min-w-0">
         <p className="font-bold text-stone-900">{title}</p>
         <p className="text-stone-500 text-xs mt-0.5 leading-relaxed">{subtitle}</p>
-        <a
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`inline-block mt-3 text-white text-xs font-semibold px-3 py-1.5 rounded-full ${ctaColor} transition-colors`}
-        >
-          {cta} →
-        </a>
+        {event ? (
+          <TrackedLink href={href} event={event} className={ctaClass}>
+            {cta} →
+          </TrackedLink>
+        ) : (
+          <a href={href} target="_blank" rel="noopener noreferrer" className={ctaClass}>
+            {cta} →
+          </a>
+        )}
       </div>
     </div>
   );

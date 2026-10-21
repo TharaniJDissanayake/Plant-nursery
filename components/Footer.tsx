@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { BUSINESS, whatsappLink, IG_URL, FB_URL } from "@/config/business";
+import TrackedLink from "@/components/TrackedLink";
+import type { AnalyticsEvent } from "@/lib/analytics";
 
 export default function Footer() {
   return (
@@ -16,10 +18,18 @@ export default function Footer() {
               {BUSINESS.description}
             </p>
             <div className="flex gap-3 mt-5">
-              <SocialLink href={whatsappLink("Hi!")} label="WhatsApp">
+              <SocialLink
+                href={whatsappLink("Hi!")}
+                label="WhatsApp"
+                event={{ name: "whatsapp_order_click", params: { location: "footer" } }}
+              >
                 <WhatsAppIcon />
               </SocialLink>
-              <SocialLink href={IG_URL} label="Instagram">
+              <SocialLink
+                href={IG_URL}
+                label="Instagram"
+                event={{ name: "instagram_click", params: { location: "footer" } }}
+              >
                 <InstagramIcon />
               </SocialLink>
               <SocialLink href={FB_URL} label="Facebook">
@@ -83,20 +93,27 @@ export default function Footer() {
 function SocialLink({
   href,
   label,
+  event,
   children,
 }: {
   href: string;
   label: string;
+  event?: AnalyticsEvent;
   children: React.ReactNode;
 }) {
+  const className =
+    "w-9 h-9 rounded-full bg-brand-800 hover:bg-brand-600 flex items-center justify-center text-brand-200 hover:text-white transition-colors";
+
+  if (event) {
+    return (
+      <TrackedLink href={href} event={event} aria-label={label} className={className}>
+        {children}
+      </TrackedLink>
+    );
+  }
+
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={label}
-      className="w-9 h-9 rounded-full bg-brand-800 hover:bg-brand-600 flex items-center justify-center text-brand-200 hover:text-white transition-colors"
-    >
+    <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className={className}>
       {children}
     </a>
   );

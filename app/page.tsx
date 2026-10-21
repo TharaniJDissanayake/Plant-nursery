@@ -2,6 +2,7 @@ import Link from "next/link";
 import { BUSINESS, whatsappLink, IG_URL } from "@/config/business";
 import PlantCard from "@/components/PlantCard";
 import JsonLd from "@/components/JsonLd";
+import TrackedLink from "@/components/TrackedLink";
 import { plants } from "@/data/plants";
 import { pageMetadata } from "@/lib/seo";
 import { storeSchema } from "@/lib/structured-data";
@@ -68,15 +69,14 @@ export default function HomePage() {
               and delivered right to your home. Just order via WhatsApp.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
-              <a
+              <TrackedLink
                 href={waUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                event={{ name: "whatsapp_order_click", params: { location: "hero" } }}
                 className="inline-flex items-center justify-center gap-2.5 bg-white text-brand-800 hover:bg-brand-50 font-bold px-7 py-3.5 rounded-full text-base transition-colors shadow-lg"
               >
                 <WhatsAppIcon className="w-5 h-5" />
                 Order on WhatsApp
-              </a>
+              </TrackedLink>
               <Link
                 href="/shop"
                 className="inline-flex items-center justify-center gap-2 border-2 border-white/40 hover:border-white/80 text-white font-semibold px-7 py-3.5 rounded-full text-base transition-colors"
@@ -208,23 +208,21 @@ export default function HomePage() {
             and plant care tips.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a
+            <TrackedLink
               href={waUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              event={{ name: "whatsapp_order_click", params: { location: "home_cta" } }}
               className="inline-flex items-center justify-center gap-2.5 bg-white text-brand-800 hover:bg-brand-50 font-bold px-7 py-3.5 rounded-full transition-colors shadow"
             >
               <WhatsAppIcon className="w-5 h-5" />
               Chat on WhatsApp
-            </a>
-            <a
+            </TrackedLink>
+            <TrackedLink
               href={IG_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              event={{ name: "instagram_click", params: { location: "home_cta" } }}
               className="inline-flex items-center justify-center gap-2 border-2 border-white/40 hover:border-white/80 text-white font-semibold px-7 py-3.5 rounded-full transition-colors"
             >
               Follow on Instagram
-            </a>
+            </TrackedLink>
           </div>
         </div>
       </section>
