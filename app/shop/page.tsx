@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import PlantCard from "@/components/PlantCard";
 import { plants } from "@/data/plants";
-import { BUSINESS, WA_BASE } from "@/config/business";
+import { BUSINESS, whatsappLink } from "@/config/business";
 
 export const metadata: Metadata = {
   title: "Shop Plants",
@@ -17,7 +17,7 @@ const categories = [
   { key: "edible", label: "🍃 Edible" },
 ] as const;
 
-const waMessage = encodeURIComponent(
+const waUrl = whatsappLink(
   "Hi! I'd like to browse your plant catalog. What's available this week?"
 );
 
@@ -81,7 +81,7 @@ export default function ShopPage() {
             </p>
           </div>
           <a
-            href={`${WA_BASE}?text=${waMessage}`}
+            href={waUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="shrink-0 inline-flex items-center gap-2.5 bg-white text-brand-800 hover:bg-brand-50 font-bold px-6 py-3 rounded-full transition-colors"

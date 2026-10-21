@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BUSINESS, WA_BASE, IG_URL } from "@/config/business";
+import { BUSINESS, whatsappLink, IG_URL } from "@/config/business";
 import PlantCard from "@/components/PlantCard";
 import { plants } from "@/data/plants";
 
@@ -19,7 +19,7 @@ const features = [
   {
     icon: "🚚",
     title: "Delivered to Your Door",
-    desc: "We deliver across Colombo and surrounding areas on scheduled days.",
+    desc: `We deliver across ${BUSINESS.serviceArea} and surrounding areas on scheduled days.`,
   },
   {
     icon: "💬",
@@ -33,7 +33,7 @@ const features = [
   },
 ];
 
-const waMessage = encodeURIComponent(
+const waUrl = whatsappLink(
   "Hi! I'd like to browse your plants. What's available this week?"
 );
 
@@ -51,10 +51,10 @@ export default function HomePage() {
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 lg:py-40">
           <div className="max-w-2xl">
             <span className="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-brand-100 text-sm font-medium px-3 py-1 rounded-full mb-6">
-              🌿 Colombo & Surrounding Areas
+              🌿 {BUSINESS.serviceArea} & Surrounding Areas
             </span>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight text-balance mb-6">
-              Fresh Plants Delivered to Your Door in Kadawatha & Colombo
+              {BUSINESS.tagline}
             </h1>
             <p className="text-brand-100 text-lg leading-relaxed mb-8 max-w-xl">
               Discover beautiful indoor and outdoor plants — curated, grown locally,
@@ -62,7 +62,7 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <a
-                href={`${WA_BASE}?text=${waMessage}`}
+                href={waUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2.5 bg-white text-brand-800 hover:bg-brand-50 font-bold px-7 py-3.5 rounded-full text-base transition-colors shadow-lg"
@@ -202,7 +202,7 @@ export default function HomePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
-              href={`${WA_BASE}?text=${waMessage}`}
+              href={waUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2.5 bg-white text-brand-800 hover:bg-brand-50 font-bold px-7 py-3.5 rounded-full transition-colors shadow"
