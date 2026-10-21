@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { BUSINESS } from "@/config/business";
+
+// GA4 is only loaded when a measurement ID is configured (see .env.example).
+const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
 const description =
   "Buy fresh indoor and outdoor plants online in Sri Lanka. Delivered to your door in Kadawatha, Colombo and nearby. Order via WhatsApp.";
@@ -47,6 +51,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
       </body>
+      {gaId && <GoogleAnalytics gaId={gaId} />}
     </html>
   );
 }
