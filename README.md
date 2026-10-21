@@ -8,7 +8,6 @@ A fast, SEO-friendly plant shop for Sri Lanka, built with Next.js. Customers bro
 
 > This is a portfolio project. The shop isn't real, and the WhatsApp number and social links are placeholders.
 
-<!-- TODO: add a screenshot of the home page at docs/screenshot.png -->
 ![Petal & Leaf home page](docs/screenshot.png)
 
 ## Features
@@ -131,19 +130,31 @@ All plant photos are from [Unsplash](https://unsplash.com) and used under the [U
 
 ## How I used Claude Code
 
-<!-- TODO: Fill in this section yourself. Replace each bullet below with your own words. -->
-
 **How I planned the work**
 
-- TODO: …
-- TODO: …
+- I wrote the initial prompt and split the improvements into six phases: real images, contact details, SEO, Google Analytics, CI and tests, and this README.
+- I set the rules for every phase:
+  - work on its own Git branch
+  - show me a plan before starting
+  - pass `npm run build` and `npm run lint` before pushing
+  - keep the existing design and copy
+  - never commit secrets
+- I opened and merged every pull request myself, one phase at a time.
 
 **What Claude Code generated**
 
-- TODO: …
-- TODO: …
+- The code for each phase:
+  - next/image setup
+  - the `config/business.ts` refactor
+  - JSON-LD, metadata, sitemap, robots.txt and the Open Graph image
+  - GA4 event tracking
+  - Vitest tests and the GitHub Actions workflow
+  - the first draft of this README
+- It found the plant photos on Unsplash and wrote the image credits. It looked at each photo first and replaced several that Unsplash had mislabelled, such as a calla lily tagged as a peace lily.
+- It checked its own work before each push: it ran the build, lint and tests, and inspected the pages on a local production server.
 
 **What I reviewed or changed**
 
-- TODO: …
-- TODO: …
+- I chose to run the site as a demo with placeholder contact details.
+- I asked whether the site was secure and whether anything had leaked. That led to a separate PR that fixed known vulnerabilities in the dependencies, including a critical one in Next.js.
+- I took the home page screenshot used above.
