@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Plant, lightLabel, waterLabel } from "@/data/plants";
-import { BUSINESS, WA_BASE } from "@/config/business";
+import { BUSINESS, whatsappLink } from "@/config/business";
 
 export default function PlantCard({
   plant,
@@ -9,10 +9,9 @@ export default function PlantCard({
   plant: Plant;
   priority?: boolean; // only for cards visible above the fold
 }) {
-  const message = encodeURIComponent(
+  const waUrl = whatsappLink(
     `Hi! I'd like to order ${plant.name} (${BUSINESS.currency} ${plant.price.toLocaleString()}). Please let me know if it's available.`
   );
-  const waUrl = `${WA_BASE}?text=${message}`;
 
   return (
     <div className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md border border-brand-100 hover:border-brand-300 transition-all duration-200 flex flex-col">

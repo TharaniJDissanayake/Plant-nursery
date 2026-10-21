@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BUSINESS, WA_BASE, IG_URL, FB_URL } from "@/config/business";
+import { BUSINESS, whatsappLink, IG_URL, FB_URL } from "@/config/business";
 
 export default function Footer() {
   return (
@@ -16,7 +16,7 @@ export default function Footer() {
               {BUSINESS.description}
             </p>
             <div className="flex gap-3 mt-5">
-              <SocialLink href={`${WA_BASE}?text=Hi!`} label="WhatsApp">
+              <SocialLink href={whatsappLink("Hi!")} label="WhatsApp">
                 <WhatsAppIcon />
               </SocialLink>
               <SocialLink href={IG_URL} label="Instagram">
@@ -69,6 +69,12 @@ export default function Footer() {
           <p>© {new Date().getFullYear()} {BUSINESS.name}. All rights reserved.</p>
           <p>Made with 🌱 in Sri Lanka</p>
         </div>
+
+        {BUSINESS.isDemo && (
+          <p className="mt-4 text-center text-brand-500 text-xs">
+            Demo site — a portfolio project, not a real shop. Contact details are placeholders.
+          </p>
+        )}
       </div>
     </footer>
   );

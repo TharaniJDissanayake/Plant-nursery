@@ -3,7 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { BUSINESS, WA_BASE } from "@/config/business";
+import { BUSINESS, whatsappLink } from "@/config/business";
+
+const waUrl = whatsappLink("Hi! I'd like to browse your plants.");
 
 const links = [
   { href: "/", label: "Home" },
@@ -44,7 +46,7 @@ export default function Navbar() {
               </Link>
             ))}
             <a
-              href={`${WA_BASE}?text=Hi!%20I%27d%20like%20to%20browse%20your%20plants.`}
+              href={waUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="ml-3 inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 rounded-full transition-colors shadow-sm"
@@ -90,7 +92,7 @@ export default function Navbar() {
               </Link>
             ))}
             <a
-              href={`${WA_BASE}?text=Hi!%20I%27d%20like%20to%20browse%20your%20plants.`}
+              href={waUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 mx-4 mt-2 justify-center bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 rounded-full transition-colors"

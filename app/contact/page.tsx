@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { BUSINESS, WA_BASE, IG_URL, FB_URL } from "@/config/business";
+import { BUSINESS, whatsappLink, IG_URL, FB_URL } from "@/config/business";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -33,7 +33,7 @@ const faqs = [
   },
 ];
 
-const waMessage = encodeURIComponent("Hi! I'd like to get in touch about your plants.");
+const waUrl = whatsappLink("Hi! I'd like to get in touch about your plants.");
 
 export default function ContactPage() {
   return (
@@ -67,7 +67,7 @@ export default function ContactPage() {
               title="WhatsApp"
               subtitle="Quickest way to order or ask questions"
               cta="Chat with us"
-              href={`${WA_BASE}?text=${waMessage}`}
+              href={waUrl}
               ctaColor="bg-green-600 hover:bg-green-700"
             />
 
