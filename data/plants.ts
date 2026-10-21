@@ -10,6 +10,7 @@ export interface Plant {
   badge?: string;            // e.g. "Best Seller", "New"
   image: string;             // path under /public, e.g. "/images/plants/anthurium.jpg"
   imageAlt: string;          // describes the photo for screen readers
+  inStock?: boolean;         // defaults to true; set false to mark sold out
 }
 
 export const plants: Plant[] = [

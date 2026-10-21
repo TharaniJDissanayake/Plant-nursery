@@ -4,8 +4,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { BUSINESS, whatsappLink } from "@/config/business";
+import TrackedLink from "@/components/TrackedLink";
+import type { AnalyticsEvent } from "@/lib/analytics";
 
 const waUrl = whatsappLink("Hi! I'd like to browse your plants.");
+const waEvent: AnalyticsEvent = {
+  name: "whatsapp_order_click",
+  params: { location: "navbar" },
+};
 
 const links = [
   { href: "/", label: "Home" },
@@ -45,15 +51,14 @@ export default function Navbar() {
                 {l.label}
               </Link>
             ))}
-            <a
+            <TrackedLink
               href={waUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              event={waEvent}
               className="ml-3 inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 rounded-full transition-colors shadow-sm"
             >
               <WhatsAppIcon />
               Order Now
-            </a>
+            </TrackedLink>
           </nav>
 
           {/* Mobile hamburger */}
@@ -91,15 +96,14 @@ export default function Navbar() {
                 {l.label}
               </Link>
             ))}
-            <a
+            <TrackedLink
               href={waUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              event={waEvent}
               className="flex items-center gap-2 mx-4 mt-2 justify-center bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 rounded-full transition-colors"
             >
               <WhatsAppIcon />
               Order on WhatsApp
-            </a>
+            </TrackedLink>
           </div>
         )}
       </div>

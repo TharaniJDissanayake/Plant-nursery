@@ -1,17 +1,25 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { BUSINESS } from "@/config/business";
 
+// GA4 is only loaded when a measurement ID is configured (see .env.example).
+const gaId = process.env.NEXT_PUBLIC_GA_ID;
+
+const description =
+  "Buy fresh indoor and outdoor plants online in Sri Lanka. Delivered to your door in Kadawatha, Colombo and nearby. Order via WhatsApp.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(BUSINESS.siteUrl),
   title: {
     default: `${BUSINESS.name} | Plants Delivered in Sri Lanka`,
     template: `%s | ${BUSINESS.name}`,
   },
-  description:
-    "Buy fresh indoor and outdoor plants online in Sri Lanka. Delivered to your door in Colombo. Order via WhatsApp.",
+  description,
   keywords: [
+    "plants Kadawatha",
     "plants Sri Lanka",
     "buy plants Colombo",
     "indoor plants delivery Sri Lanka",
@@ -24,8 +32,10 @@ export const metadata: Metadata = {
     locale: "en_LK",
     siteName: BUSINESS.name,
     title: `${BUSINESS.name} | Plants Delivered in Sri Lanka`,
-    description:
-      "Buy fresh indoor and outdoor plants online in Sri Lanka. Delivered to your door in Colombo. Order via WhatsApp.",
+    description,
+  },
+  twitter: {
+    card: "summary_large_image",
   },
 };
 
@@ -41,6 +51,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
       </body>
+      {gaId && <GoogleAnalytics gaId={gaId} />}
     </html>
   );
 }

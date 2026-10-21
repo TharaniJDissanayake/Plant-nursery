@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { BUSINESS } from "@/config/business";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About Us",
-  description: `Learn about ${BUSINESS.name} — a Sri Lanka-based plant shop delivering fresh, locally grown plants to homes across Colombo.`,
-};
+export const metadata = pageMetadata({
+  title: "About Us: Locally Grown Plants",
+  description: `Meet ${BUSINESS.name}, a Sri Lankan plant shop growing healthy, well-rooted indoor and outdoor plants and delivering them to homes in Kadawatha and Colombo.`,
+  path: "/about",
+});
 
 const values = [
   {
