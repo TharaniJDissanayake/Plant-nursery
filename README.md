@@ -4,8 +4,6 @@ A fast, SEO-friendly plant shop for Sri Lanka, built with Next.js. Customers bro
 
 [![CI](https://github.com/TharaniJDissanayake/Plant-nursery/actions/workflows/ci.yml/badge.svg)](https://github.com/TharaniJDissanayake/Plant-nursery/actions/workflows/ci.yml)
 
-**Live site:** https://plant-nursery-delta.vercel.app
-
 > This is a portfolio project. The shop isn't real, and the WhatsApp number and social links are placeholders.
 
 ![Petal & Leaf home page](docs/screenshot.png)
