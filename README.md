@@ -8,7 +8,6 @@ A fast, SEO-friendly plant shop for Sri Lanka, built with Next.js. Customers bro
 
 > This is a portfolio project. The shop isn't real, and the WhatsApp number and social links are placeholders.
 
-<!-- TODO: add a screenshot of the home page at docs/screenshot.png -->
 ![Petal & Leaf home page](docs/screenshot.png)
 
 ## Features
